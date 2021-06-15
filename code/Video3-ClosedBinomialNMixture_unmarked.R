@@ -86,7 +86,6 @@ burned <- unique(df[,c("Transect","Burned")])
 burned <- as.matrix(burned[,"Burned"])
 burned
 
-C
 burned
 head(df)
 
