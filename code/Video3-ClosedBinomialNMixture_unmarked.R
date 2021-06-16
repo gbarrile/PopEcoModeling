@@ -157,6 +157,15 @@ m3 <- pcount(~time ~burned, data=umf, mixture="ZIP", K=130)
 # Compare models using AIC
 cbind(AIC.P=m1@AIC, AIC.NB=m2@AIC, AIC.ZIP=m3@AIC)
 
+# Poisson has lowest AIC. Why?
+# 1.
+# likely indicates that the variance scales with the mean
+# and there is little to no overdispersion
+# Therefore, extra parameter in the negative binomial model not worth it
+# 2.
+# We likely don't have more zeros in our data than expected by the Poisson
+# Therefore, extra parameters in zero-inflated Poisson not worth it
+
 
 # Predictions of abundance at specified values of percent burned area, say 0, 30, and 60)
 newdat <- data.frame(burned=c(0, 30, 60))
@@ -209,11 +218,19 @@ lines(pred.det$time, pred.det$Predicted, lwd=8, col="blue")
 lines(pred.det$time, pred.det$lower, lwd=4, lty=2, col="black")
 lines(pred.det$time, pred.det$upper, lwd=4, lty=2, col="black")
 
+# confidence intervals would likely become tighter if we conducted more surveys
+# at each transect. In other words, our estimate of detection probability
+# would likely be more precise with additional replicate surveys
 
 
 # Extract abundance at each transect
 ranef(m1)
-
+# Site-specific abundance is a random effect (Ni)
+# ranef() function obtains estimates of these random effects via
+# applying Bayes' rule for a conditional estimate of abundance (Ni)
+# given the model parameters and the observed count data (i.e., the function
+# obtains the best unbiased prediction [BUP] of the random effects based on 
+# the posterior distribution of Ni)
 
 
 
