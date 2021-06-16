@@ -112,6 +112,8 @@ C      # matrix of survey data (salamander counts)
 burned # percent burned area at each transect (we think it might influence abundance)
 time   # time recorded during every survey (we think it might influence detection)
 
+# important to remember that we can also include site covariates on detection
+
 # Input data into an 'unmarked data frame'
 umf <- unmarkedFramePCount(
   y=C,                                   # Counts matrix
@@ -138,6 +140,7 @@ max(C)
 # employed with point count data. However, applications of the binomial mixture
 # model are not restricted to point count data, as we can see with our use
 # of counts along transects.
+
 
 # check out summary of the model
 summary(m1)
