@@ -22,15 +22,7 @@ citation("rjags")
 
 # read-in the salamander count data from our ten transects  
 # read-in data from the csv
-# df <- read.csv("data/Salamander_Wildfire.csv")
-
-# read-in the salamander count data from our ten transects  
-
-# set working directory (which will be on the Git page)
-setwd("H:/WEST_video_course/3_Closed_BinNMix_unmarked")
-
-#  read-in data from the csv
-df <- read.csv("Salamander_Wildfire.csv")
+df <- read.csv("data/Salamander_Wildfire.csv")
 
 # so now we have our data stored as 'df'
 
