@@ -27,11 +27,9 @@ require(ggplot2)
 citation("unmarked")
 
 
-# set working directory (which will be on the Git page)
-setwd("H:/WEST_video_course/6_Open_BinNMix_unmarked")
-
-#  read-in data from the csv
-df <- read.csv("IndianRoller_Rainfall.csv")
+# read-in the Indian roller count data from our 14 sites  
+# read-in data from the csv
+df <- read.csv("data/IndianRoller_Rainfall.csv")
 
 # how many site did we survey?
 unique(df$Site) # 14
