@@ -3,7 +3,7 @@
 
 # Addressing the question: "How does wildfire influence salamander abundance?"
 
-# Code last updated on 6/16/2021 by Gabe Barrile
+# Code last updated on 6/20/2021 by Gabe Barrile
 
 
 
@@ -278,24 +278,32 @@ sum(apply(C, 1, max))
 
 # Plot posterior distributions and means of intercept and slope parameters (Abundance model)
 par(mfrow = c(2,1))
-hist(unlist(samples[,'alpha.lam']), col = "grey", main = "alpha.lam", xlab = "")
+hist(unlist(samples[,'alpha.lam']), col = "grey", 
+     main = "alpha.lam (intercept in abundance model)", xlab = "")
 abline(v = summary(samples)$statistics['alpha.lam',][1], lwd = 3, col = "black")
-hist(unlist(samples[,'beta1.lam']), col = "grey", main = "beta1.lam", xlab = "", xlim = c(-.06,0))
+hist(unlist(samples[,'beta1.lam']), col = "grey", 
+     main = "beta1.lam (slope in abundance model for burned covariate)", 
+     xlab = "", xlim = c(-.06,0))
 abline(v = summary(samples)$statistics['beta1.lam',][1], lwd = 3, col = "black")
 abline(v = 0, lwd = 3, col = "blue")
 
 # Plot posterior distributions and means of intercept and slope parameters (Detection model)
 par(mfrow = c(2,1))
-hist(unlist(samples[,'alpha.p']), col = "grey", main = "alpha.p", xlab = "")
+hist(unlist(samples[,'alpha.p']), col = "grey", 
+     main = "alpha.p (intercept in detection model)", xlab = "")
 abline(v = summary(samples)$statistics['alpha.p',][1], lwd = 3, col = "black")
-hist(unlist(samples[,'beta1.p']), col = "grey", main = "beta1.p", xlab = "")
+hist(unlist(samples[,'beta1.p']), col = "grey", 
+     main = "beta1.p (slope in detection model for time of day covariate)", xlab = "")
 abline(v = summary(samples)$statistics['beta1.p',][1], lwd = 3, col = "black")
+abline(v = 0, lwd = 3, col = "blue")
 
 # Plot posterior distribution and mean of total population size
 par(mfrow = c(1,1))
-hist(unlist(samples[,'totalN']), col = "grey", main = "Total N", xlab = "")
+hist(unlist(samples[,'totalN']), col = "grey", 
+     main = "Total abundance across all transects", 
+     xlab = "", breaks = 80, xlim = c(155,500))
 abline(v = summary(samples)$statistics['totalN',][1], lwd = 3, col = "black")
-abline(v = 0, lwd = 3, col = "blue")
+
 
 
 # Population size at each transect
