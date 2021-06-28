@@ -213,7 +213,7 @@ f0.=list(formula= ~ 1)
 # fit Model 1
 # need to set a working directory for model outputs 
 # I usually create a folder named 'models'
-setwd("H:/WEST_video_course/5_Closed_PopEst_RMark/models")
+# setwd("H:/WEST_video_course/5_Closed_PopEst_RMark/models")
 
 m1 <- mark(d.proc,
            d.ddl, 
