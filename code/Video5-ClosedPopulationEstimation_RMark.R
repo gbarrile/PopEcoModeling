@@ -23,15 +23,8 @@ require(ggplot2)
 citation("RMark")
 
 # read-in the boreal toad capture-mark-recapture data from our three ponds  
-#  read-in data from the csv
-#df <- read.csv("data/BorealToad_CaptureRecapture.csv")
-
-
-# set working directory (which will be on the Git page)
-setwd("H:/WEST_video_course/5_Closed_PopEst_RMark")
-
-#  read-in data from the csv
-df <- read.csv("BorealToad_CaptureRecapture.csv")
+# read-in data from the csv
+df <- read.csv("data/BorealToad_CaptureRecapture.csv")
 
 # so now we have our data stored as 'df'
 
