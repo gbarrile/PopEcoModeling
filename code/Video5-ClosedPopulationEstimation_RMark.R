@@ -3,7 +3,7 @@
 
 # Addressing the question: "How does boreal toad abundance vary across ponds?"
 
-# Code last updated on 6/28/2021 by Gabe Barrile
+# Code last updated on 7/12/2021 by Gabe Barrile
 
 
 
@@ -23,8 +23,15 @@ require(ggplot2)
 citation("RMark")
 
 # read-in the boreal toad capture-mark-recapture data from our three ponds  
-# read-in data from the csv
-df <- read.csv("data/BorealToad_CaptureRecapture.csv")
+#  read-in data from the csv
+#df <- read.csv("data/BorealToad_CaptureRecapture.csv")
+
+
+# set working directory (which will be on the Git page)
+setwd("H:/WEST_video_course/5_Closed_PopEst_RMark")
+
+#  read-in data from the csv
+df <- read.csv("BorealToad_CaptureRecapture.csv")
 
 # so now we have our data stored as 'df'
 
@@ -75,6 +82,7 @@ head(capt.hist)
 y$ch <- pasty(y[,2:k])
 
 head(y)
+# 'ch' is character, not numeric
 
 nchar(y$ch)
 table(nchar(y$ch))
@@ -186,6 +194,16 @@ d.ddl$c
 
 # the number of individuals never captured
 d.ddl$f0
+# the notation 'f0' originates from the frequency (count) of animals observed 0 times). 
+# The f0 parametrization is useful computationally because f0 is bounded on the interval [0,???], 
+# thus forcing the logical constraint that N ??? the number of individuals marked (M). 
+# In fact, MARK uses the f0 parametrization for ease of computation by using the log link function 
+# to constrain f0 ??? 0, and presents the results in terms of N as a derived parameter
+# in other words, the likelihood is rewritten in MARK in terms of the number of individuals never caught, f0,
+# such that f0 = N ??? M 
+# (M = the number of individuals marked)
+
+
 
 
 
@@ -211,9 +229,8 @@ f0.=list(formula= ~ 1)
 
 
 # fit Model 1
-# need to set a working directory for model outputs 
-# I usually create a folder named 'models'
-# setwd("H:/WEST_video_course/5_Closed_PopEst_RMark/models")
+# this is not in code for github
+setwd("H:/WEST_video_course/5_Closed_PopEst_RMark/models")
 
 m1 <- mark(d.proc,
            d.ddl, 
@@ -287,6 +304,45 @@ m2$results$real
 
 # compare models with AICc
 c(m1$results$AICc,m2$results$AICc)
+
+
+
+
+# Model 2 again
+# different way to specify, but results should be the same
+
+# Do not share p and c
+# Capture probability does not equal recapture probability
+# obtain an estimate for capture probability and for recapture probability
+
+# p
+d.ddl$p
+p.c.shared=list(formula=~ 1 + c, share = TRUE)
+
+# f0
+f0.=list(formula= ~ 1)
+
+# fit Model 2
+m2b <- mark(d.proc,
+           d.ddl, 
+           model.parameters = list(p = p.c.shared,
+                                   f0= f0.))
+
+
+# look at model output
+
+# real estimates
+m2b$results$real
+m2$results$real
+
+# compare models with AICc
+c(m1$results$AICc,m2$results$AICc,m2b$results$AICc)
+
+
+
+
+
+
 
 
 
@@ -442,12 +498,163 @@ ggplot(cap, aes(x=survey, y=estimate, group=pond, color=pond)) +
 
 
 
-# we will incorporate individual covariates (e.g., SVL) into models
-# that we cover later in the course
 
 
 
 
+# Now let's incorporate individual covariates (e.g., SVL) into our models
+
+# process data in RMark 
+
+###### CLOSED MODELS FOR ABUNDANCE ################
+d.proc=process.data(boto, model="Huggins") 
+
+# Huggins models condition abundance out of the likelihood,
+# thus permiting the modelling of capture probability as a function of individual covariates
+
+
+# create design data
+d.ddl <- make.design.data(d.proc)
+# NOTE: the design dataframes are just as important as your raw data!
+# design data in this example are fairly simple, but will get more complex
+# and detailed in future videos
+
+# Let's explore the design data
+# see which parameters are estimated in the model
+names(d.ddl)
+
+# capture and recapture probabilities can be the same or can be different 
+# let's say you catch a rabbit in a trap for the first time 
+# (that's your capture probability)
+# Then let's say that rabbit subsequently avoids your traps
+# In that case, it's very likely that your recapture probability of that rabbit
+# is different than the probability of capturing that rabbit the first time
+# This is just one example whereby capture and recapture probability can differ
+
+# look at design data for each parameter
+
+# capture probability
+d.ddl$p
+
+# recapture probability
+d.ddl$c
+# all individuals captured during survey 1 were captured for the first time,
+# thus recapture probability starts at time = 2 or survey 2
+
+# the number of individuals never captured
+d.ddl$f0
+# In this model, the likelihood is conditioned on the number of animals detected 
+# and f0 therefore drops out of the likelihood. 
+# These models contain only p and c, with abundance N estimated as a derived parameter.
+# As noted earlier, the primary advantage of the Huggins data type is that 
+# individual covariates can be used to model p and c.
+
+
+# specify models for each parameter
+
+# Model 1
+
+# p (capture probability)
+pc.=list(formula= ~ 1, share = TRUE)
+# share = TRUE indicates p = c or capture probability = recapture probability
+# ~ 1 or the intercept model is often referred to as the 'constant' model, 
+# meaning that capture probability is constant over time and space 
+# (e.g., doesn't vary across surveys or at different ponds)
+
+
+# fit Model 1
+# this is not in code for github
+setwd("H:/WEST_video_course/5_Closed_PopEst_RMark/models")
+
+m1 <- mark(d.proc,
+           d.ddl, 
+           model.parameters = list(p = pc.))
+
+
+# look at model output
+
+# beta coefficients
+m1$results$beta
+# these are just the intercepts in this case
+
+# real estimates (on the scale we tend to think on)
+m1$results$real
+
+# derived parameters
+m1$results$derived
+
+# how is abundance estimated?
+
+# what is the probability of an individual not being captured at all during our study?
+# (1 - p)(1 - p)(1 - p)(1 - p)
+# what is p, our capture probability?
+p <- m1$results$real$estimate[1]
+p
+# the probability of an individual not being captured at all during our study?
+p.no <- (1 - p)*(1 - p)*(1 - p)*(1 - p)
+# so what is the probability of being captured at least once?
+p.once <- 1 - p.no
+# then we can say that the number of individuals that we marked was equal to
+# the probability of being captured at least once times the total population size (N)
+
+# so we need to obtain the total number that we marked 
+marked <- nrow(boto)
+
+# here's the equation:      p.once * N = marked
+# rearrage to solve for N:  N = marked / p.once
+
+# So N should be:
+marked / p.once
+# compare to derived estimate from model 
+m1$results$derived
+
+
+
+
+
+# svl as individual covariate on capture probability
+
+# p (capture probability)
+pc.svl =list(formula= ~ svl, share = TRUE)
+
+
+# fit Model 2
+# this is not in code for github
+setwd("H:/WEST_video_course/5_Closed_PopEst_RMark/models")
+
+m2 <- mark(d.proc,
+           d.ddl, 
+           model.parameters = list(p = pc.svl))
+
+
+# look at model output
+
+# beta coefficients
+m2$results$beta
+
+# real estimates (on the scale we tend to think on)
+m2$results$real
+
+# derived parameters
+m2$results$derived
+
+
+# plot relationship between capture probability and SVL
+range(boto$svl)
+# make predictions based on model (m2)
+pred.svl <- covariate.predictions(m2, data=data.frame(svl=56:88),indices=c(1))$estimates
+
+min(pred.svl$lcl)
+max(pred.svl$ucl)
+op <- par(mar = c(5,5,4,2) + 0.1) # default is 5,4,4,2
+plot(x = pred.svl$covdata, y = pred.svl$estimate, pch=16, 
+     ylab = "Capture Probability",
+     xlab = "SVL (mm)", cex.lab=1.5, cex.axis=1.2, 
+     col="darkgray", ylim=c(0.1,0.5))
+box(lwd = 4, col = 'black')
+lines(pred.svl$covdata, pred.svl$estimate, lwd=8, col="blue")
+lines(pred.svl$covdata, pred.svl$lcl, lwd=4, lty=2, col="black")
+lines(pred.svl$covdata, pred.svl$ucl, lwd=4, lty=2, col="black")
 
 
 
