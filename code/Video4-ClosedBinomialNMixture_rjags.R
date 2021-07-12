@@ -146,7 +146,6 @@ time # time recorded during every survey (we think it might affect detection)
 # Define model
 modelstring = " model {
 
-# Likelihood
 # Biological model for true abundance
 for (i in 1:Sites) {			# Loop over the number of transects
 N[i] ~ dpois(lambda[i])   # State model (Poisson distribution)
@@ -235,7 +234,8 @@ inits <- function(){list(N = Nst, alpha.lam=rnorm(1, 0, 1), beta1.lam=rnorm(1, 0
                          alpha.p=rnorm(1, 0, 1), beta1.p=rnorm(1, 0, 1))}
 # need initial value for each parameter that we will estimate
 
-# adaptation
+# adaptation phase
+# using MCMC algorithm in an automated way to tune algorithmic parameters
 model <- jags.model(textConnection(modelstring),
                     data = list('Sites'=Sites, 'Surveys'=Surveys,
                                 'C'=C, 'burned'=burned,
@@ -244,8 +244,8 @@ model <- jags.model(textConnection(modelstring),
                     n.chains = 3, # number of parallel chains for the model 
                     n.adapt = 10000) # number of iterations for adaptation
 
-# n.adapt or number of burn ins should be around 10,000 for real analysis, 
-# but may take a while to run
+# n.adapt or number of burn ins could be around 10,000 
+# but that will vary depending on model convergence
 
 # sample from posterior
 samples <- coda.samples(model=model,
@@ -254,9 +254,9 @@ samples <- coda.samples(model=model,
                         n.iter=60000, # number of iterations to monitor
                         thin=50) # thinning interval
 
-# n.iter should be around 60,000 for real analysis
-# thin should be around 50 for real analysis
-# this can make the analysis take a long time
+# n.iter could be around 60,000 
+# thin could be around 50
+# but again these settings will vary depending on model convergence
 
 # check out summary of samples
 summary(samples)
