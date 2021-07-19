@@ -5,21 +5,29 @@
 # How does little tern breeding occurrence change over time on beaches in northern Europe?
   
 
-# Code last updated on 7/5/2021 by Gabe Barrile
+# Code last updated on 7/15/2021 by Gabe Barrile
 
 
 
-# load packages containing the functions that we need
+# install the packages that we will use:
+
+#install.packages("RMark")
+#install.packages("reshape")
+#install.packages("ggplot2")
+
+# make sure packages are installed and active
 require(RMark)
 require(reshape)
 require(ggplot2)
 
 
-# set working directory to where the data (.csv) exists
-setwd("H:/WEST_video_course/9_Multi-Season_Occupancy_RMark")
+# citing the unmarked package
+citation("RMark")
 
-# read-in data
-df <- read.csv("LittleTern_Breeding.csv")
+
+# read-in the little tern detection/nondetection data from the beaches that we surveyed 
+# read-in data from the csv
+df <- read.csv("data/LittleTern_Breeding.csv")
 
 # check out data
 head(df)
