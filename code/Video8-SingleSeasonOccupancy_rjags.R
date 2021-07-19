@@ -4,7 +4,7 @@
 # Addressing the question: 
 # "How does forest cover influence the occurrence of brown tree snakes on pacific islands?
 
-# Code last updated on 7/5/2021 by Gabe Barrile
+# Code last updated on 7/10/2021 by Gabe Barrile
 
 
 
@@ -23,13 +23,7 @@ citation("rjags")
 
 # read-in the brown tree snake detection/nondetection data from the islands that we surveyed 
 # read-in data from the csv
-#df <- read.csv("data/BrownTreeSnake_ForestCover.csv")
-
-# set working directory (which will be on the Git page)
-setwd("H:/WEST_video_course/7_Single-Season_Occupancy_unmarked")
-
-#  read-in data from the csv
-df <- read.csv("BrownTreeSnake_ForestCover.csv")
+df <- read.csv("data/BrownTreeSnake_ForestCover.csv")
 
 # how many islands did we survey?
 unique(df$Island) # 12
@@ -125,7 +119,7 @@ Sites # number of sites
 Surveys # number of surveys at each site (6 in this case)
 C      # matrix of survey data (detection/nondetection data of brown tree snakes)
 forest # percent forest cover on each island (we think it might influence occupancy)
-temp   # temp (°C) recorded during every survey (we think it might influence detection)
+temp   # temp (?C) recorded during every survey (we think it might influence detection)
 
 
 
@@ -317,7 +311,7 @@ newx <- seq(21,40,length.out = 20)
 par(mfrow = c(1,1))
 op <- par(mar = c(5,5,4,2) + 0.1) # default is 5,4,4,2
 plot(newx, 1/(1+exp(-(post.b0 + post.b1*newx))),
-     ylab="Detection Probability", xlab="Air Temperature (°C)",
+     ylab="Detection Probability", xlab="Air Temperature (?C)",
      main="", las=1, type = "l", col="blue", lwd=4, ylim=c(0,1))
 box(lwd = 3, col = 'black')
 
