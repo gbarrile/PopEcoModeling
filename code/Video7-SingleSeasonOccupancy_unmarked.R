@@ -23,14 +23,7 @@ citation("unmarked")
 
 # read-in the brown tree snake detection/nondetection data from the islands that we surveyed 
 # read-in data from the csv
-#df <- read.csv("data/BrownTreeSnake_ForestCover.csv")
-
-
-# set working directory (which will be on the Git page)
-setwd("H:/WEST_video_course/7_Single-Season_Occupancy_unmarked")
-
-#  read-in data from the csv
-df <- read.csv("BrownTreeSnake_ForestCover.csv")
+df <- read.csv("data/BrownTreeSnake_ForestCover.csv")
 
 # how many islands did we survey?
 unique(df$Island) # 12
@@ -107,7 +100,7 @@ rm(m,y,K)
 # Here are the data for analysis:
 C      # matrix of survey data (detection/nondetection data of brown tree snakes)
 forest # percent forest cover on each island (we think it might influence occupancy)
-temp   # temp (°C) recorded during every survey (we think it might influence detection)
+temp   # temp (?C) recorded during every survey (we think it might influence detection)
 
 
 # Input data into an 'unmarked data frame'
@@ -163,7 +156,7 @@ newdat <- data.frame(forest=c(0, 50, 100))
 predict(m4, type="state", newdata=newdat, append = T)
 
 
-# Predictions of p (detection probability) for values of temperature (e.g., 20, 30, 40 °C)
+# Predictions of p (detection probability) for values of temperature (e.g., 20, 30, 40 ?C)
 newdat <- data.frame(temp=c(20,30,40))
 predict(m4, type="det", newdata=newdat, append = T)
 
@@ -201,7 +194,7 @@ max(pred.det$upper)
 op <- par(mar = c(5,5,4,2) + 0.1) # default is 5,4,4,2
 plot(x = pred.det$temp, y = pred.det$Predicted, pch=16, 
      ylab = "Detection Probability",
-     xlab = "Air Temperature (°C)", cex.lab=1.5, cex.axis=1.2, 
+     xlab = "Air Temperature (?C)", cex.lab=1.5, cex.axis=1.2, 
      col="darkgray", ylim=c(0,1))
 box(lwd = 4, col = 'black')
 lines(pred.det$temp, pred.det$Predicted, lwd=8, col="blue")
