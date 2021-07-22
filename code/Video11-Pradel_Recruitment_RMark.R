@@ -22,16 +22,9 @@ require(ggplot2)
 # citing the RMark package
 citation("RMark")
 
-# read-in the boreal toad capture-mark-recapture data 
+# read-in the boreal toad capture-mark-recapture data for recruitment
 #  read-in data from the csv
-#df <- read.csv("data/BorealToad_Recruitment.csv")
-
-
-# set working directory (which will be on the Git page)
-setwd("H:/WEST_video_course/11_Pradel_Recruitment_RMark")
-
-#  read-in data from the csv
-df <- read.csv("BorealToad_Recruitment.csv")
+df <- read.csv("data/BorealToad_Recruitment.csv")
 
 # so now we have our data stored as 'df'
 
@@ -217,8 +210,7 @@ f.timexpond = list(formula=~time * pond)
 # i.e., will estimate a different survival probability between each year and at each pond
 Phi.timexpond = list(formula =~time * pond)
 
-# fit models
-setwd("H:/Mark_Recap_2.4.2021/models")
+# fit model
 
 m.timexpond <- mark(toad.proc,
                    toad.ddl, 
@@ -245,8 +237,7 @@ f.time = list(formula=~time)
 # i.e., will estimate a different survival probability between each year
 Phi.time = list(formula =~time)
 
-# fit models
-setwd("H:/Mark_Recap_2.4.2021/models")
+# fit model
 
 m.time <- mark(toad.proc,
                    toad.ddl, 
@@ -274,7 +265,6 @@ f.pond = list(formula=~pond)
 Phi.pond = list(formula =~pond)
 
 # fit models
-setwd("H:/Mark_Recap_2.4.2021/models")
 
 m.pond <- mark(toad.proc,
                    toad.ddl, 
@@ -301,8 +291,7 @@ f.time.pond = list(formula=~time + pond)
 # i.e., will estimate a different survival probability between each year and at each pond
 Phi.time.pond = list(formula =~time + pond)
 
-# fit models
-setwd("H:/Mark_Recap_2.4.2021/models")
+# fit model
 
 m.time.pond <- mark(toad.proc,
                     toad.ddl, 
@@ -593,8 +582,7 @@ f.timexpond = list(formula=~time * pond)
 # model survival as a function of precipitation (ppt)
 Phi.ppt = list(formula =~ppt)
 
-# fit models
-setwd("H:/Mark_Recap_2.4.2021/models")
+# fit model
 
 m.ppt <- mark(toad.proc,
               toad.ddl, 
