@@ -22,16 +22,9 @@ require(ggplot2)
 # citing the RMark package
 citation("RMark")
 
-# read-in the boreal toad capture-mark-recapture data 
+# read-in the boreal toad capture-mark-recapture data for dispersal
 #  read-in data from the csv
-#df <- read.csv("data/BorealToad_Dispersal.csv")
-
-
-# set working directory (which will be on the Git page)
-setwd("H:/WEST_video_course/12_Multistate_Dispersal_RMark")
-
-#  read-in data from the csv
-df <- read.csv("BorealToad_Dispersal.csv")
+df <- read.csv("data/BorealToad_Dispersal.csv")
 
 # so now we have our data stored as 'df'
 
@@ -249,8 +242,7 @@ S.timexpond = list(formula =~time * stratum)
 head(toad.ddl$Psi)
 Psi.timexpond=list(formula=~-1+stratum:tostratum*time)
 
-# fit models
-setwd("H:/Mark_Recap_2.4.2021/models")
+# fit model
 
 m.timexpond <- mark(toad.proc,
                     toad.ddl, 
@@ -281,8 +273,7 @@ S.timexpond = list(formula =~time * stratum)
 head(toad.ddl$Psi)
 Psi.ponds=list(formula=~-1+stratum:tostratum)
 
-# fit models
-setwd("H:/Mark_Recap_2.4.2021/models")
+# fit model
 
 m.pond <- mark(toad.proc,
                     toad.ddl, 
