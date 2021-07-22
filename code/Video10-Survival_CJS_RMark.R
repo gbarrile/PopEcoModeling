@@ -24,14 +24,7 @@ citation("RMark")
 
 # read-in the brook trout capture-mark-recapture data 
 #  read-in data from the csv
-#df <- read.csv("data/BrookTrout_EnergyDevelopment.csv")
-
-
-# set working directory (which will be on the Git page)
-setwd("H:/WEST_video_course/10_CJS_Survival_RMark")
-
-#  read-in data from the csv
-df <- read.csv("BrookTrout_EnergyDevelopment.csv")
+df <- read.csv("data/BrookTrout_EnergyDevelopment.csv")
 
 # so now we have our data stored as 'df'
 
@@ -162,8 +155,6 @@ Phi.loc = list(formula =  ~ location)
 
 
 # fit Model 1
-# this is not in code for github
-setwd("H:/WEST_video_course/10_CJS_Survival_RMark/models")
 
 m1 <- mark(d.proc,
            d.ddl, 
@@ -203,8 +194,6 @@ Phi.loc = list(formula =  ~ location)
 
 
 # fit Model 2
-# this is not in code for github
-setwd("H:/WEST_video_course/10_CJS_Survival_RMark/models")
 
 m2 <- mark(d.proc,
            d.ddl, 
