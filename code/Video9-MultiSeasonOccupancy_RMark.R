@@ -5,7 +5,7 @@
 # How does little tern breeding occurrence change over time on beaches in northern Europe?
   
 
-# Code last updated on 7/15/2021 by Gabe Barrile
+# Code last updated on 7/22/2021 by Gabe Barrile
 
 
 
@@ -154,7 +154,7 @@ G.1 = list(formula =  ~ time)
 
 
 # fit model
-setwd("F:/Multistate/models")
+
 # 1
 occ <- mark(t.proc, # processed data
             t.ddl,  # design data
