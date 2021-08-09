@@ -279,3 +279,39 @@ ggplot(cap, aes(x=location, y=estimate)) +
 
 
 
+
+# Work with the results: estimate difference in survival between sites with energy development
+# and sites within the national park
+
+# Estimate the difference in survival rates between the two locations and 
+# put a confidence interval on that estimated difference. 
+
+# Here, we use the output from the model and the delta method
+# to develop the SE and 95% CI for expressing the uncertainty for the estimated difference. 
+
+# For information on the delta method, refer to Appendix B in the
+# Program MARK manual (i.e., Program MARK: A Gentle Introduction)
+
+# Note: some of the code below was developed by 
+# Jay Rotella, Ecology Dept., Montana State University
+
+# store var-cov for real estimates
+rr=get.real(m1, "Phi", se=TRUE, vcv=TRUE)
+sigma=rr$vcv.real # store var-cov in "sigma"
+
+# load package 'msm' that implements the delta method
+# then run delta method on difference in survival
+library(msm)
+s.Energy = rr$estimates$estimate[1]  # first row w/ output for sites with energy development
+s.Park = rr$estimates$estimate[7]    # first row w/ output for sites within the national park
+Diff= s.Energy - s.Park 
+seDiff=deltamethod(~x1-x2,c(s.Energy,s.Park),sigma)
+lclDiff=Diff-1.96*seDiff
+uclDiff=Diff+1.96*seDiff
+round(c(Diff,seDiff,lclDiff,uclDiff),3)
+# 95% CI does not include zero, providing statistical evidence that 
+# brook trout survival is lower at sites with energy development
+# compared with sites located within the national park
+
+
+
