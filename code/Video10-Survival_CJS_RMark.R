@@ -3,7 +3,7 @@
 # Addressing the question: 
 # Does brook trout survival differ in a national park versus land developed for energy extraction?"
 
-# Code last updated on 7/15/2021 by Gabe Barrile
+# Code last updated on 8/7/2021 by Gabe Barrile
 
 
 
