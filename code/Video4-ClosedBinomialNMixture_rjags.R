@@ -131,8 +131,8 @@ Surveys
 
 # Here are the data for our model/analysis:
 
-Sites # number of sites
-Surveys # number of surveys at each site (3 in this case)
+Sites # number of sites (i.e. number of transects)
+Surveys # number of surveys at each transect (3 in this case)
 C # matrix of survey data (salamander counts)
 burned # percent burned area at each transect (we think it might influence abundance)
 time # time recorded during every survey (we think it might affect detection)
