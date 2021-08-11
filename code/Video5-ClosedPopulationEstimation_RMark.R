@@ -188,12 +188,14 @@ d.ddl$c
 # the number of individuals never captured
 d.ddl$f0
 # the notation 'f0' originates from the frequency (count) of animals observed 0 times). 
-# The f0 parametrization is useful computationally because f0 is bounded on the interval [0,???], 
-# thus forcing the logical constraint that N ??? the number of individuals marked (M). 
-# In fact, MARK uses the f0 parametrization for ease of computation by using the log link function 
-# to constrain f0 ??? 0, and presents the results in terms of N as a derived parameter
-# in other words, the likelihood is rewritten in MARK in terms of the number of individuals never caught, f0,
-# such that f0 = N ??? M 
+# The f0 parametrization is useful computationally because f0 is bounded on the 
+# interval [0, positive infinity], thus forcing the logical constraint that 
+# N > the number of individuals marked (M). 
+# In fact, MARK uses the f0 parametrization for ease of computation by using 
+# the log link function to constrain f0 >= 0, and presents the results in terms of N 
+# as a derived parameter.
+# In other words, the likelihood is rewritten in MARK in terms of the 
+# number of individuals never caught, f0, such that f0 = N - M 
 # (M = the number of individuals marked)
 
 
@@ -222,8 +224,6 @@ f0.=list(formula= ~ 1)
 
 
 # fit Model 1
-# this is not in code for github
-setwd("H:/WEST_video_course/5_Closed_PopEst_RMark/models")
 
 m1 <- mark(d.proc,
            d.ddl, 
@@ -556,8 +556,6 @@ pc.=list(formula= ~ 1, share = TRUE)
 
 
 # fit Model 1
-# this is not in code for github
-setwd("H:/WEST_video_course/5_Closed_PopEst_RMark/models")
 
 m1 <- mark(d.proc,
            d.ddl, 
@@ -612,8 +610,6 @@ pc.svl =list(formula= ~ svl, share = TRUE)
 
 
 # fit Model 2
-# this is not in code for github
-setwd("H:/WEST_video_course/5_Closed_PopEst_RMark/models")
 
 m2 <- mark(d.proc,
            d.ddl, 
