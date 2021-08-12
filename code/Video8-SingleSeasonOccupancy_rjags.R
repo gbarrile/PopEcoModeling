@@ -130,7 +130,7 @@ temp   # temp (?C) recorded during every survey (we think it might influence det
 # Define model
 modelstring = " model {
 
-# Biological model for true abundance
+# Biological model for true occupancy
 for (i in 1:Sites) {			# Loop over the number of islands
 z[i] ~ dbern(psi[i])      # State model (Bernoulli distribution)
 logit(psi[i]) <- alpha.occ + beta.occ * forest[i]
