@@ -4,7 +4,7 @@
 # Addressing the question: 
 # "How does forest cover influence the occurrence of brown tree snakes on pacific islands?
   
-# Code last updated on 7/5/2021 by Gabe Barrile
+# Code last updated on 8/1/2021 by Gabe Barrile
 
 
 
@@ -100,7 +100,7 @@ rm(m,y,K)
 # Here are the data for analysis:
 C      # matrix of survey data (detection/nondetection data of brown tree snakes)
 forest # percent forest cover on each island (we think it might influence occupancy)
-temp   # temp (?C) recorded during every survey (we think it might influence detection)
+temp   # temp (°C) recorded during every survey (we think it might influence detection)
 
 
 # Input data into an 'unmarked data frame'
