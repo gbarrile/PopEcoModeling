@@ -4,7 +4,7 @@
 # Addressing the question: 
 # "How does forest cover influence the occurrence of brown tree snakes on pacific islands?
 
-# Code last updated on 7/10/2021 by Gabe Barrile
+# Code last updated on 8/2/2021 by Gabe Barrile
 
 
 
@@ -43,7 +43,7 @@ K <- ncol(y)
 
 C <- as.matrix(y[,2:K])
 
-C # each transect is a row (12 rows)
+C # each island is a row (12 rows)
 # each column indicates the survey at each island (six surveys at each island)
 
 
