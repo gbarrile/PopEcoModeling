@@ -171,8 +171,8 @@ logit(p[i,j]) <- alpha.p + beta.p * temp[i,j]
 
 
 # Priors
-alpha.occ ~ dunif(-10, 10) # uniform distribution for intercept in abundance model
-beta.occ ~ dunif(-10, 10) # uniform distribution for slope in abundance model
+alpha.occ ~ dunif(-10, 10) # uniform distribution for intercept in occupancy model
+beta.occ ~ dunif(-10, 10) # uniform distribution for slope in occupancy model
 alpha.p ~ dunif(-30, 30) # uniform distribution for intercept in detection model
 beta.p ~ dunif(-10, 10) # uniform distribution for slope in detection model
 # we chose vague priors, but could use more informative priors
