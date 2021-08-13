@@ -92,6 +92,7 @@ intervals  <-  c(0,0,1, # 2015
                  0,0,1, # 2017
                  0,0,1, # 2018
                  0,0)   # 2019
+intervals
 
 # process data in RMark format
 t.proc = process.data(tern, model = "RDOccupEG", groups = "beach", 
