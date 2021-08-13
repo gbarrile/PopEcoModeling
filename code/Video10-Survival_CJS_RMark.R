@@ -143,7 +143,7 @@ d.ddl$p # capture probability
 
 # define p model
 d.ddl$p # capture probability
-# let's allow p to vary over time
+# let's allow p to vary by location
 p.loc = list(formula =  ~  location)
 
 
