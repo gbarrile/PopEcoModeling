@@ -3,7 +3,7 @@
 # Addressing the question: 
 # How do boreal toad dispersal rates vary amoong the three ponds in our study area?"
 
-# Code last updated on 7/22/2021 by Gabe Barrile
+# Code last updated on 8/9/2021 by Gabe Barrile
 
 
 
@@ -86,7 +86,7 @@ table(nchar(y$ch))
 
 # add variables to 'y' dataframe
 
-# Location: national park or developed for energy extraction
+# Location: each pond
 y$Pond <- df$Pond[match(y$Tag, df$Tag)]
 
 
