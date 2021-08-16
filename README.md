@@ -50,7 +50,7 @@ Download and install the following programs for your platform:
 [Program MARK](http://www.phidot.org/software/mark/downloads/) and [JAGS](https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/)
 
 ### Installing packages
-Once you have R and RStudio set up on your device, install the following packages via pasting these commands into your prompt (i.e., copy and paste the code into the "Console" of RStudio and hit enter)
+Once you have R and RStudio set up on your device, install the following packages via pasting these commands into your prompt (i.e., copy and paste the code into the "Console" of RStudio and hit enter):
 
 ```coffee
 install.packages("unmarked")
