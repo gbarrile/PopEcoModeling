@@ -61,7 +61,7 @@ install.packages("ggplot2")
 ```
 
 ### Downloading code/data from this repository 
-Simply hit the **Download ZIP** button at the top-right of this page (scroll up to see it). If you're not sure where to save it, just download and unzip to your Desktop.
+Simply click the **Code** dropdown button at the top-right of this page (scroll up to see it). Then hit **Download ZIP** in the dropdown menu. If you're not sure where to save it, just download and unzip to your Desktop.
 
 
 ---
