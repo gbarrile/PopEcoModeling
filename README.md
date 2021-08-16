@@ -45,7 +45,7 @@ Please email **gbarrile15@gmail.com** with any questions, comments, or requests.
 
 Download and install the following programs for your platform:
 
-[R](http://cran.cnr.berkeley.edu) and [RStudio Desktop](http://www.rstudio.com/ide/download/)
+[R](https://cran.r-project.org/) and [RStudio Desktop](http://www.rstudio.com/ide/download/)
 
 [Program MARK](http://www.phidot.org/software/mark/downloads/) and [JAGS](https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/)
 
