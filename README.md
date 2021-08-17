@@ -67,7 +67,7 @@ Simply click the **Code** dropdown button at the top-right of this page (scroll 
 
 ## Acknowledgments
 
-This online course in population analysis was made possible through the funding of Wyoming NSF EPSCoR via the Microbial Ecology Collaborative. A huge thank you also to Western EcoSystems Technology, Inc. and the University of Wyoming for supporting this project. Special thanks to Andrew Tredennick for supervision and feedback on each lesson and analysis. 
+This online course in population analysis was made possible through the funding of Wyoming NSF EPSCoR via the Microbial Ecology Collaborative. A huge thank you also to Western EcoSystems Technology, Inc. (WEST) and the University of Wyoming for hosting and supporting this project. Special thanks to Andrew Tredennick of WEST for supervision and feedback on each lesson and analysis. 
 
 
 ---
