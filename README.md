@@ -2,8 +2,8 @@
 
 Welcome to statistical modeling in population ecology! This online course introduces key software packages and fundamental models used in fish and wildlife population analysis. Course content includes the parameterization of models used to estimate ecological state variables such as occupancy and abundance as well as population vital rates such as survival, recruitment, and dispersal. The course is comprised of instructional videos with associated datasets and R code. To jump right into the video series, click **'Start Course'** below to begin the course from the beginning, or search **'By topic'** to skip to specific lessons. Further, please read the **'Additional Instructions'** below on downloading/installing the software and packages required to execute the R scripts that accompany each lesson. 
 
-## Organizers
-[Gabriel Barrile](http://wyocoopunit.org/people/gabe-barrile) and [Andrew Tredennick](http://atredennick.github.io/)
+## Instructor
+[Gabriel Barrile](http://wyocoopunit.org/people/gabe-barrile)
 
 Please email **gbarrile15@gmail.com** with any questions, comments, or requests.
 
