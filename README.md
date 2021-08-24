@@ -39,6 +39,8 @@ Please email **gbarrile15@gmail.com** with any questions, comments, or requests.
 
 [Dispersal: Robust Design Multi-state Model in RMark](https://www.youtube.com/watch?v=YUmt5YlgYhM)
 
+[Highlighting Underrepresented Works in Population Ecology and Analysis](https://www.youtube.com/watch?v=-mkVZDw4cdY)
+
 ---
 
 ## Additional Instructions
