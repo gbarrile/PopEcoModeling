@@ -5,7 +5,7 @@ Welcome to statistical modeling in population ecology! This online course introd
 ## Instructor
 [Gabriel Barrile](http://wyocoopunit.org/people/gabe-barrile)
 
-Please email **gbarrile@west-inc.com** and/or **gbarrile15@gmail.com** with any questions, comments, or requests.
+Please email **gbarrile15@gmail.com** with any questions, comments, or requests.
 
 ---
   
